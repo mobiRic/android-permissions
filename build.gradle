@@ -54,7 +54,7 @@ android {
 publishing {
     publications {
         androidPermissions(MavenPublication) {
-            groupId 'com.intentfilter'
+            groupId 'com.github.mobiric'
             artifactId 'android-permissions'
             version android.defaultConfig.versionName
             artifact("$buildDir/outputs/aar/android-permissions-release.aar")
