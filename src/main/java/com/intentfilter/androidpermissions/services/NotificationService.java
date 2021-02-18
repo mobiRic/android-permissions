@@ -47,7 +47,7 @@ public class NotificationService {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(android.R.mipmap.sym_def_app_icon)
+                .setSmallIcon(R.mipmap.android_permissions_notification_small_icon)
                 .setContentIntent(pendingIntent);
 
         notificationBuilder.setDeleteIntent(deleteIntent);
