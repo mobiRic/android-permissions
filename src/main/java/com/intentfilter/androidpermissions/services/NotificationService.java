@@ -6,10 +6,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
-import androidx.core.app.NotificationCompat;
 
 import com.intentfilter.androidpermissions.R;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import static android.app.PendingIntent.FLAG_ONE_SHOT;
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -47,8 +50,16 @@ public class NotificationService {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setSmallIcon(android.R.mipmap.sym_def_app_icon)
+                .setSmallIcon(R.mipmap.android_permissions_notification_small_icon)
                 .setContentIntent(pendingIntent);
+
+        // set color if it has been configured
+        try {
+            int notificationColor = ContextCompat.getColor(context, R.color.android_permissions_notification_color);
+            notificationBuilder.setColor(notificationColor);
+        } catch (Resources.NotFoundException e) {
+            // resource alias has not been overridden - use default notification color
+        }
 
         notificationBuilder.setDeleteIntent(deleteIntent);
 

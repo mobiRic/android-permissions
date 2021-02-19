@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <mipmap name="android_permissions_notification_small_icon">@android:mipmap/sym_def_app_icon</mipmap>
+    <color name="android_permissions_notification_color">@null</color>
+</resources>
