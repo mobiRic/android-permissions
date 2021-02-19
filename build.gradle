@@ -54,28 +54,9 @@ android {
 publishing {
     publications {
         androidPermissions(MavenPublication) {
-            groupId 'com.intentfilter'
+            groupId 'com.github.mobiric'
             artifactId 'android-permissions'
             version android.defaultConfig.versionName
-            artifact("$buildDir/outputs/aar/android-permissions-release.aar")
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-
-                configurations.implementation.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
-                }
-
-                configurations.annotationProcessor.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
-                    dependencyNode.appendNode('optional', true)
-                }
-            }
         }
     }
 }
