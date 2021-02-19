@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -15,7 +16,7 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
 
 static String makeVersionName(String majorVersion, String minorVersion, String patchVersion) {
     majorVersion ? majorVersion + "." + minorVersion + "." + patchVersion : "1.0.0"
@@ -47,16 +48,6 @@ android {
         release {
             minifyEnabled false
             consumerProguardFiles 'proguard-rules.pro'
-        }
-    }
-}
-
-publishing {
-    publications {
-        androidPermissions(MavenPublication) {
-            groupId 'com.github.mobiric'
-            artifactId 'android-permissions'
-            version android.defaultConfig.versionName
         }
     }
 }
